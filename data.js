@@ -19,7 +19,7 @@ window.membersData = [
   { id: 2, name: "zegic", avatar: "img/avatar/zegic.jpg", blog: "", description: "虚无的山里灵活的细狗", year: 2021 },
   { id: 3, name: "La2z0y", avatar: "img/avatar/La2z0y.jpg", blog: "", description: "这个人很懒，什么都没有留下。", year: 2021 },
   { id: 4, name: "MeowNeko", avatar: "img/avatar/MeowNeko.jpg", blog: "", description: "茶歇区常驻派送员", year: 2021 },
-  { id: 4, name: "Xsheep", avatar: "img/avatar/xsheep.jpg", blog: "https://zyy0808.github.io/", description: "Forever young，Always tearful", year: 2021 },
+  { id: 4, name: "Xsheep", avatar: "img/avatar/xsheep.jpg", blog: "https://xsh11p.github.io/", description: "Forever young，Always tearful", year: 2021 },
   { id: 4, name: "程茉一", avatar: "img/avatar/chengmoyi.jpg", blog: "", description: "下辈子不学计算机", year: 2021 },
   { id: 4, name: "zeyiwu", avatar: "img/avatar/zeyiwu.jpg", blog: "", description: "在知识的海洋里，希望我是一条大鲨鱼", year: 2021 },
   // 2022
@@ -37,10 +37,10 @@ window.membersData = [
   { id: 5, name: "KUI", avatar: "img/avatar/kui.jpg", blog: "", description: "泪水打湿猪脚饭，发誓要挣一百万", year: 2023 },
   { id: 7, name: "La0D3ng", avatar: "img/avatar/laodeng.jpg", blog: "", description: "我是钟离的狗", year: 2023 },
   { id: 7, name: "dimotlo", avatar: "img/avatar/dimotlo.jpg", blog: "", description: "三人行必有我师焉", year: 2023 },
-  { id: 7, name: "0wnerD1ed", avatar: "img/avatar/0wnerD1ed.jpg", blog: "https://github.com/0wnerDied", description: "nubnub", year: 2023 },
-  { id: 7, name: "alexsun", avatar: "img/avatar/alexsun.jpg", blog: "https://alexyun.site", description: "一个不给自己论坛上证书的蠢蛋", year: 2023 },
+  { id: 7, name: "0wnerD1ed", avatar: "img/avatar/0wnerD1ed.jpg", blog: "https://0b1t.tech/", description: "nubnub", year: 2023 },
+  { id: 7, name: "alexsun", avatar: "img/avatar/alexsun.jpg", blog: "https://alexyun.site", description: "MacMini真的很省电", year: 2023 },
   { id: 7, name: "Dawn_ARC", avatar: "img/avatar/Dawn_ARC.jpg", blog: "https://www.luminarc.tech", description: "我打CTF？真的假的？", year: 2023 },
-  { id: 7, name: "N0rth_5ea", avatar: "img/avatar/InWhere.jpg", blog: "https://www.bing.com", description: "一片空白下是乱七八糟", year: 2023 },
+  { id: 7, name: "N0rth_5ea", avatar: "img/avatar/InWhere.jpg", blog: "https://blog.n0rth5ea.online/", description: "一片空白下是乱七八糟", year: 2023 },
   //2024
   { id: 5, name: "星辰", avatar: "img/avatar/xingchen.jpg", blog: "", description: "唯一的限制是你给自己设定的限制。", year: 2024 },
   { id: 5, name: "游标卡尺", avatar: "img/avatar/youbiaokachi.jpg", blog: "", description: "积极有趣抽象的唐山人", year: 2024 },

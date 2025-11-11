@@ -1,38 +1,40 @@
+/* --- 全局重置与基础样式 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 关键：统一盒模型，避免内外边距影响布局 */
+}
+
 html {
-  scroll-behavior: smooth; /* 启用平滑滚动效果 */
+  scroll-behavior: smooth;
 }
 
-html, body {
-  background-color: #ffffff !important; /* 强制背景为白色 */
-  margin: 0;
-  padding: 0;
-}
-
-/* 全局样式 */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 使用系统默认字体，提升兼容性 */
+  background-color: #ffffff;
   color: #333;
+  line-height: 1.6; /* 设置基础行高 */
 }
 
+/* --- 头部 Header --- */
 header {
-  position: fixed; /* 头部固定 */
+  position: fixed;
   top: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.95); /* 添加轻微透明效果 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* 确保头部始终在最前面 */
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* 毛玻璃效果，提升现代感 */
 }
 
 .header-content {
-  max-width: 2500px;
-  margin: 0 180px;
+  max-width: 1400px; /* 限制最大宽度，适配大屏幕 */
+  margin: 0 auto; /* 居中 */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 20px; /* 左右留出安全边距 */
+  flex-wrap: wrap; /* 允许在小屏幕上换行 */
 }
 
 .header-content img {
@@ -42,176 +44,151 @@ header {
 nav {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap; /* 允许导航项换行 */
+  justify-content: center; /* 在换行时居中显示 */
 }
 
 nav a {
-  text-decoration: none; /* 去掉下划线 */
-  color: #007acc; /* 设置默认文字颜色 */
+  text-decoration: none;
+  color: #007acc;
   font-size: 16px;
   font-weight: bold;
-  padding: 8px 15px; /* 增加内边距，形成按钮效果 */
-  border-radius: 8px; /* 设置圆角 */
-  transition: all 0.3s ease; /* 添加过渡效果 */
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
-  color: #ffffff; /* 悬停时文字变白 */
-  background-color: #007acc; /* 悬停时添加背景色 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
-  transform: scale(1.1); /* 悬停时放大 */
+  color: #ffffff;
+  background-color: #007acc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px) scale(1.05); /* 改进悬停效果 */
 }
 
+/* --- 主内容区域 --- */
 .main-section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 200px;
-  padding-top: 80px; 
-  background-color: #ffffff;
-  margin-top: 20px;
-  height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: center;
+  padding: 120px 20px 60px; /* 顶部padding增加，为固定header留出空间，左右使用安全边距 */
+  min-height: 100vh; /* 至少一屏高 */
+  gap: 40px; /* 元素间隔 */
 }
 
 .content {
   flex: 1;
-  padding-right: 20px;
+  max-width: 600px;
 }
 
 .content h1 {
-  font-size: 48px;
-  margin: 0 0 20px 0;
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* 使用clamp实现流畅的字体大小缩放 */
   color: #007acc;
-  line-height: 1.5;
-}
-
-.content h1 span {
-  display: block;
+  line-height: 1.3;
 }
 
 .content p {
-  line-height: 2;
-  font-size: 24px;
-  font-family: "Comic Sans MS", "Arial", sans-serif;
-  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-family: "KaiTi", "Arial", sans-serif; /* 尝试使用更优雅的中文字体 */
+  font-weight: normal;
+  line-height: 1.8;
+  margin-top: 20px;
 }
 
 .logo {
-  max-width: 700px;
+  flex: 1;
+  max-width: 500px;
 }
 
 .logo img {
   width: 100%;
+  height: auto; /* 保证图片等比缩放 */
   border-radius: 8px;
 }
 
+/* --- 战队介绍 --- */
 .team-intro-section {
-  width: 100%;
-  background-color: #f0f4f8; /* 设置浅灰色背景 */
-  padding: 50px 200px;
-  box-sizing: border-box;
+  background-color: #f0f4f8;
+  padding: 80px 20px; /* 使用统一的垂直和水平padding */
 }
 
 .team-intro-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 100px 0;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* 允许换行 */
 }
 
 .team-logo img {
-  width: 400px;
+  width: 100%;
+  max-width: 350px; /* 限制最大宽度 */
   height: auto;
-  margin-right: 45px;
 }
 
 .team-description {
   flex: 1;
-  margin-left: 20px; /* 调整与 Logo 的间距 */
+  min-width: 300px; /* 保证文本区域最小宽度 */
 }
 
 .team-description h2 {
-  font-size: 36px;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   color: #007acc;
   margin-bottom: 20px;
 }
 
 .team-description p {
-  line-height: 2;
-  font-size: 22px;
-  font-family: "Comic Sans MS", "Arial", sans-serif;
-  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-family: "KaiTi", "Arial", sans-serif;
+  line-height: 1.8;
 }
 
-
-
-/* 获奖经历部分 */
-.honor-section {
-  width: 100%;
-  height: auto;
-  background-color: #f0f4f8;
-  padding: 50px 200px;
-  box-sizing: border-box;
+/* --- 通用 Section 样式 --- */
+.honor-section, .members-section {
+  padding: 80px 20px;
   text-align: center;
 }
+.honor-section { background-color: #ffffff; }
+.members-section { background-color: #f0f4f8; }
 
-.honor-section h2 {
-  font-size: 36px;
+.honor-section h2, .members-section h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
   color: #007acc;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .year-group h3 {
-  font-size: 32px;
+  font-size: clamp(1.8rem, 3.5vw, 2.2rem);
   color: #555;
   margin-top: 40px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 .honor-list {
   list-style: none;
-  padding: 0;
-  text-align: center;
 }
 
 .honor-list li {
-  font-size: 25px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.8;
-  color: #333;
-  text-align: center;
-  margin: 0 auto;
   max-width: 800px;
+  margin: 0 auto 10px; /* 增加列表项底部间距 */
 }
 
-/* 活跃成员部分 */
-.members-section {
-  width: 100%;
-  height: auto;
-  background-color: #ffffff;
-  padding: 50px 200px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.members-section h2 {
-  font-size: 36px;
-  color: #007acc;
-  margin-bottom: 20px;
-}
-
+/* --- 成员网格 --- */
 .members-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px; /* 成员卡片间距 */
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .member-card {
   text-align: center;
-  width: calc(25% - 20px);
-  box-sizing: border-box;
+  width: 200px; /* 固定卡片宽度 */
 }
 
 .member-card img {
@@ -220,160 +197,97 @@ nav a:hover {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .member-card img:hover {
   transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 122, 204, 0.3);
 }
 
 .member-card strong {
   display: block;
-  margin: 10px 0 5px;
+  margin: 15px 0 5px;
   font-size: 18px;
-  color: #333;
 }
 
 .member-card p {
   font-size: 14px;
   color: #666;
-  margin: 5px 0 0;
+  padding: 0 5px; /* 防止描述文本过长紧贴边缘 */
 }
 
+/* --- Footer 页脚 --- */
 .footer-separator-container {
-  background-color: #ffffff;
-  width: 100%;
+  background-color: #f0f4f8; /* 与上方 members-section 颜色一致 */
 }
-
 .footer-separator {
-  width: 90%;
-  height: 2px;
-  margin: 20px auto;
-  background: linear-gradient(to right, #ffffff, #007acc, #ffffff);
+  width: 90%; height: 2px; margin: 0 auto;
+  background: linear-gradient(to right, transparent, #007acc, transparent);
 }
-
 .footer {
-  width: 100%;
   background-color: #ffffff;
-  padding: 20px 0;
+  padding: 40px 20px;
   text-align: center;
 }
-
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.wechat-container {
-  position: relative;
-}
-
-.wechat-icon {
-  width: 160px;
-  height: 40px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.wechat-icon:hover {
-  transform: scale(1.2);
-}
-
+.wechat-container { position: relative; display: inline-block; }
+.wechat-icon { width: 160px; height: 40px; cursor: pointer; transition: transform 0.3s ease; }
+.wechat-icon:hover { transform: scale(1.1); }
 .wechat-qrcode {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  background: #fff;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  position: absolute; bottom: 120%; left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+  visibility: hidden;
+  background: #fff; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; transition: all 0.3s ease;
 }
-
 .wechat-container:hover .wechat-qrcode {
-  display: block;
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  visibility: visible;
 }
+.wechat-qrcode img { width: 150px; height: 150px; display: block; }
+.footer-text { margin: 15px 0; }
+.copyright { font-size: 14px; color: #666; }
 
-.wechat-qrcode img {
-  width: 150px;
-  height: 150px;
-}
-
-.footer-text {
-  font-size: 16px;
-  color: #333;
-}
-
-.copyright {
-  font-size: 14px;
-  color: #666;
-}
-
+/* --- 响应式设计：媒体查询 --- */
 @media (max-width: 768px) {
   .header-content {
-    margin: 0 20px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    flex-wrap: wrap;
+    justify-content: center; /* 头部内容居中 */
     gap: 10px;
   }
 
+  .main-section, .team-intro-content {
+    flex-direction: column; /* 垂直堆叠 */
+    text-align: center;
+  }
+  
   .main-section {
-    flex-direction: column;
-    padding: 30px 20px;
-    height: auto;
-    margin-top: 80px;
+    padding-top: 150px; /* 预留更多头部空间 */
   }
 
-  .content h1 {
-    font-size: 32px;
+  .content {
+    padding-right: 0;
   }
 
   .team-logo img {
-    width: 200px;
-    margin: 0 auto;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
-
-  .team-description {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .members-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-
+  
   .member-card {
-    width: calc(50% - 10px);
+    width: calc(50% - 20px); /* 每行显示两个 */
   }
-
-  .honor-section,
-  .members-section {
-    padding: 30px 10px;
-  }
-
-  .team-intro-section {
-    padding: 20px 10px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .team-description p,
-  .honor-list li {
-    word-wrap: break-word;
-    font-size: 16px;
+  
+  .member-card img {
+    width: 120px;
+    height: 120px;
   }
 }
 
+@media (max-width: 480px) {
+  .member-card {
+    width: 100%; /* 每行显示一个 */
+  }
+}

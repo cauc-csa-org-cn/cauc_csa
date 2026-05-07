@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>网络空间安全协会</title>
   <link rel="icon" href="img/other/favicon.ico" type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.prod.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -31,7 +31,9 @@
           <span>中国民航大学</span>
           <span>网络空间安全协会</span>
         </h1>
-        <p>{{ description }}</p>
+        <div class="intro-copy">
+          <p v-for="paragraph in description" :key="paragraph">{{ paragraph }}</p>
+        </div>
       </div>
       <div class="logo">
         <img src="img/other/logo.png" alt="协会Logo">
@@ -46,9 +48,11 @@
         <div class="team-description">
           <h2>战队介绍</h2>
           <p>
-            Air2top是网络空间安全协会主力战队，队名即 AirToTop，寓意以行动为翼、乘风而起，将 Top 作为目标冲向巅峰！✨
-            这里聚集了一群热爱网络安全、追求极致的小伙伴💻， 有赛场上的激情🏆，也有日常的欢笑🤝。无论是技术突破还是团队协作，我们都全力以赴，
-            每一步都满怀激情❤️‍🔥，每一次突破都直指顶峰！🎯 在 Air2top，拼的是技术，燃的是梦想，冲的是巅峰！🔥
+            Air2top 是协会的主力战队，常年征战于 CTF 竞赛、攻防演练与各类网络安全赛事一线。
+          </p>
+          <p>
+            战队覆盖 Web、Pwn、Reverse、Crypto、Misc 全方向，依托日常组队训练、专题分享与赛后复盘，持续打磨技术深度与战斗节奏。
+            我们看重扎实的基本功和稳定的输出，也看重传承——让每一届成员都能在实战中找到自己的方向，把这条路走得更远。
           </p>
         </div>
       </div>
@@ -57,10 +61,10 @@
     <!-- 获奖经历 -->
     <div class="honor-section" id="honor">
       <h2>获奖经历</h2>
-      <div v-for="(honors, year) in groupedHonors" :key="year" class="year-group">
-        <h3>{{ year }}</h3>
+      <div v-for="group in sortedHonorGroups" :key="group.year" class="year-group honor-year-group">
+        <h3>{{ group.year }}</h3>
         <ul class="honor-list">
-          <li v-for="(honor, index) in honors" :key="index">{{ honor }}</li>
+          <li v-for="honor in group.honors" :key="honor">{{ honor }}</li>
         </ul>
       </div>
     </div>
@@ -72,10 +76,11 @@
       <div v-for="group in sortedMemberGroups" :key="group.year" class="year-group">
         <h3>{{ group.year }}</h3>
         <div class="members-grid">
-          <div v-for="member in group.members" :key="member.id" class="member-card">
-            <a :href="member.blog" target="_blank">
-              <img :src="member.avatar" alt="头像" loading="lazy">
+          <div v-for="member in group.members" :key="member.avatar" class="member-card">
+            <a v-if="member.blog" :href="member.blog" target="_blank" rel="noopener noreferrer" class="member-avatar-link">
+              <img :src="member.avatar" :alt="`${member.name} 头像`" loading="lazy">
             </a>
+            <img v-else :src="member.avatar" :alt="`${member.name} 头像`" loading="lazy">
             <strong>{{ member.name }}</strong>
             <p>{{ member.description }}</p>
           </div>
@@ -98,7 +103,7 @@
           </div>
         </div>
         <p class="footer-text">关注我们的微信公众号获取更多资讯</p>
-        <p class="copyright">Copyright © 2023-2025 中航大网络空间安全协会. All Rights Reserved.</p>
+        <p class="copyright">Copyright © 2023-2026 中航大网络空间安全协会. All Rights Reserved.</p>
       </div>
     </footer>
   </div>
@@ -108,9 +113,12 @@
     const app = Vue.createApp({
       data() {
         return {
-          description: `欢迎来到网络空间安全协会！协会成立于2023年3月31日，是由安全科学与工程学院指导的校级社团。在这里，我们专注于网安技术的探索与实践，成立以来，
-                        我们的队伍迅速壮大，参加了无数令人激动的赛事，并获得了一系列奖项🏆，进步神速～✨如果你对网安技术、CTF比赛或是技术探索充满热情，
-                        想在找到自己的舞台，以及交流的平台，那就赶快加入我们吧！这里有一群志同道合的小伙伴，等你一起来“网”住未来的精彩～ 😎🎉`,
+          description: [
+            "我们成立于 2023 年 3 月 31 日，是安全科学与工程学院指导下的校级社团。",
+            "在这里，网络安全不只是一门技术，更是一种和每个人都有关的生活常识。我们一边带着同好深入钻研，一边也走向全校师生——办讲座、做科普、设展台，把“如何不被钓鱼”“密码该怎么设”“个人信息怎么保护”这些事，讲得生动一点、离大家近一点。",
+            "社团日常负责校内的网络安全竞赛培训、技术分享会，以及校级 CTF 比赛的组织与举办，给想深入的同学一条可以走的路；也面向全校开展安全意识宣传活动，让更多人对网络空间多一分警觉、多一分底气。",
+            "不需要你已经很懂技术，也不需要你打算成为“黑客”。只要你对这个领域有好奇、愿意一起做点有意思的事，欢迎加入我们。"
+          ],
           honors: window.honorsData,
           members: window.membersData
         };
@@ -122,6 +130,11 @@
             groups[honor.year].push(honor.title);
             return groups;
           }, {});
+        },
+        sortedHonorGroups() {
+          return Object.entries(this.groupedHonors)
+            .sort(([a], [b]) => b - a)
+            .map(([year, honors]) => ({ year, honors }));
         },
         groupedMembers() {
           return this.members.reduce((groups, member) => {
